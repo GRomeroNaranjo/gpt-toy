@@ -16,7 +16,7 @@ class Config():
     head_size = n_embed // n_heads
 ```
 
-Additionally, using a from-scratch highly-mathematical lr schedule systsem, where the function is as follows:
+Additionally, using a from-scratch highly-mathematical lr schedule systsem, called cosine annealing where the function is as follows:
 ```
 def get_lr(min_lr, max_lr, max_step, current_step):
     lr = min_lr + (0.5 * (max_lr - min_lr) * (1 + math.cos((current_step / max_step) * math.pi)))
@@ -34,4 +34,10 @@ checkpoint = 200
 max_lr = 6e-4
 min_lr = 6e-4 * 0.1
 total_steps = len(train_x) // gradient_accumulation_steps
+```
+In addition to all these factors, this model is using the GPT2 tokenizer accessed through tiktoken, implemented with the following code:
+```
+tokenizer = tiktoken.get_encoding("gpt2")
+encoded = tokenizer.encode("example")
+decoded = tokenizer.decode(encoded)
 ```
