@@ -23,7 +23,7 @@ def get_lr(min_lr, max_lr, max_step, current_step):
     return lr
 ```
 
-Then this implementation uses the following hyperparameters for the training loop, where gradient accumulation is integrate effectively too (where when it says that val_data calculation is 100, it means 100 steps or updates, not necessarily batches):
+Then this implementation uses the following hyperparameters for the training loop, where gradient accumulation is integrated effectively  (where when it says that val_data calculation is 100, it means 100 steps or updates, not necessarily batches):
 ```
 full_iterations = 1
 val_data_calculation = 100
